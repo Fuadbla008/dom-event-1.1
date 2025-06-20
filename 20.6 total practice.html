@@ -1,0 +1,111 @@
+<!-- 1.  at first input from user
+ 2.  get input and show display
+ 3.  like github button -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>overall practice</title>
+    <style>
+        .firstsection {
+            border: solid 5px blue;
+            padding: 10px;
+
+        }
+        .secondsection{
+            border: solid 5px red;
+            padding: 10px;
+        }
+        .thirdsection{
+            border: solid 5px green;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>today practice task</h2>
+
+    <!-- start -->
+    <div class="firstsection">
+        <h2>this section for get userinput</h2>
+        <h3 id="firstscrean">Defult text</h3>
+        <input type="text" id="firstinput">
+        <button id="firsthandel">Post</button>
+    </div>
+    <div class="secondsection">
+        <div id="commentsection">
+            <h2>this section for get usercomment. and post comment section</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, perspiciatis tempore! Maiores enim
+                ipsum, porro voluptas vero tempore, officiis nihil atque fugit laboriosam eligendi nesciunt sequi
+                repudiandae rem nostrum ex.</p>
+            <p>Quidem, quas officia iste facilis expedita labore libero voluptatem modi, natus vitae similique, ea
+                incidunt? Non omnis atque minima, error totam sequi ex suscipit dicta cumque, delectus perferendis
+                similique incidunt?</p>
+            <p>Eum odit pariatur dolor amet, ratione corporis! Consequuntur voluptatum explicabo blanditiis quas
+                accusantium, enim dolorum accusamus, tenetur ipsam quam incidunt vel mollitia reiciendis. Assumenda
+                nulla quo dolores! Non, dolor hic?</p>
+            <p>Ea corporis deleniti error reprehenderit distinctio, officiis porro ducimus cum eum nemo laborum eveniet
+                in aliquid debitis, quam ab. Assumenda ducimus amet eligendi deleniti cum odio officiis, aspernatur
+                minus velit?</p>
+
+
+        </div>
+        <textarea name="" id="inputcomment" placeholder="share your Comment here"></textarea>
+        <button id="posthandel">Post</button>
+    </div>
+
+
+    <div class="thirdsection">
+        <h1>this section for like github delete system</h1>
+        <h3 id="screanfordelete">Defult section for delete</h3>
+        <input type="text" id="confirminput" placeholder="Please Type delete">
+        <button id="deletehandel" disabled>Delete</button>
+    </div>
+
+    <!-- script file is here -->
+
+    <script>
+        // first section js
+        const firstUserInput = document.getElementById('firstinput');
+        const firstScrean = document.getElementById('firstscrean');
+        document.getElementById('firsthandel').addEventListener('click', function () {
+            firstScrean.innerHTML = firstUserInput.value;
+            firstUserInput.value = '';
+        })
+
+        // second section js
+        const commentSection = document.getElementById('commentsection');
+        const postButton = document.getElementById('posthandel');
+
+        postButton.addEventListener('click', function () {
+            const userComment = document.getElementById('inputcomment');
+            const getUserComment = userComment.value;
+            let newComment = document.createElement('p');
+            commentSection.appendChild(newComment);
+            newComment.innerHTML = getUserComment;
+            console.log(getUserComment);
+            userComment.value = '';
+        })
+
+        // third section js
+        let deleteHandel = document.getElementById('deletehandel');
+        document.getElementById('confirminput').addEventListener('keyup', function (event) {
+            if (event.target.value === 'delete') {
+                deleteHandel.removeAttribute('disabled');
+            }
+            else {
+                deleteHandel.setAttribute('disabled', true);
+            }
+        })
+        deleteHandel.addEventListener('click', function () {
+            let deleteScrean = document.getElementById('screanfordelete');
+            deleteScrean.remove();
+        })
+    </script>
+</body>
+
+</html>
